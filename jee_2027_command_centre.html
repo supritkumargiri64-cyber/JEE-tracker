@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101827">
+<title>JEE 2027 Command Centre</title>
+<style>
+:root{--bg:#0b1220;--panel:#121d2e;--panel2:#18263a;--text:#edf3fb;--muted:#9aabc0;--line:#26364c;--green:#39d98a;--blue:#69a9ff;--amber:#ffc66d;--red:#ff7d7d}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(160deg,#101b2c,#080e18 65%);color:var(--text);font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;padding:0 0 36px}
+header{padding:24px 18px 18px;background:linear-gradient(135deg,#14253b,#101827);border-bottom:1px solid var(--line)}
+.wrap{max-width:850px;margin:auto;padding:0 15px} .eyebrow{font-size:11px;letter-spacing:2px;color:var(--green);font-weight:800}
+h1{font-size:25px;line-height:1.15;margin:7px 0 5px}h2{font-size:17px;margin:0 0 13px}h3{font-size:14px;margin:0 0 8px}.sub{color:var(--muted);font-size:13px}
+.pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.pill{border:1px solid #35506b;border-radius:99px;padding:6px 10px;font-size:12px;color:#d8e6f5;background:#15263a}
+nav{position:sticky;top:0;z-index:5;background:#0d1726ee;backdrop-filter:blur(12px);border-bottom:1px solid var(--line);display:flex;gap:6px;padding:9px max(12px,calc((100% - 850px)/2));overflow:auto}
+nav button{white-space:nowrap;border:1px solid transparent;background:transparent;color:var(--muted);padding:9px 12px;border-radius:10px;font-weight:700}
+nav button.active{background:#1d3048;color:#fff;border-color:#34516f}
+main{max-width:850px;margin:18px auto;padding:0 15px}.view{display:none}.view.active{display:block}
+.card{background:linear-gradient(145deg,var(--panel),#101a29);border:1px solid var(--line);border-radius:17px;padding:16px;margin-bottom:14px;box-shadow:0 8px 22px #0002}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.stat{background:var(--panel2);border:1px solid var(--line);padding:13px;border-radius:13px}.stat small{display:block;color:var(--muted);font-size:11px}.stat strong{font-size:25px;display:block;margin-top:4px}.green{color:var(--green)}.blue{color:var(--blue)}.amber{color:var(--amber)}
+.progress{height:9px;border-radius:99px;background:#26364c;overflow:hidden;margin:8px 0}.progress span{display:block;height:100%;background:linear-gradient(90deg,#25bf7b,#70e4a9);width:0%;border-radius:99px}
+.row{display:flex;justify-content:space-between;gap:12px;align-items:center}.muted{color:var(--muted)}.check{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid #26364c}.check:last-child{border:0}.check input{accent-color:#39d98a;width:18px;height:18px;margin-top:2px;flex:none}.check label{flex:1}
+input,select,textarea{background:#0c1624;color:var(--text);border:1px solid #34465d;border-radius:10px;padding:10px;font:inherit;min-width:0;width:100%}
+button.primary,button.secondary,button.danger{border:0;border-radius:10px;padding:10px 13px;font-weight:750;cursor:pointer}
+button.primary{background:var(--green);color:#062015}button.secondary{background:#243a54;color:#e9f2fc}button.danger{background:#492b35;color:#ffdce1}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.fieldgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.field label{display:block;color:var(--muted);font-size:11px;margin-bottom:5px}
+table{width:100%;border-collapse:collapse;font-size:13px}td,th{text-align:left;padding:9px 6px;border-bottom:1px solid var(--line)}th{color:var(--muted);font-weight:600}
+.tag{font-size:11px;color:var(--green);background:#15382e;padding:4px 8px;border-radius:99px}
+.chapter{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}.chapter:last-child{border:0}
+.smallbtn{font-size:12px;padding:7px 9px!important}
+.notice{font-size:12px;color:var(--muted);line-height:1.5}
+footer{text-align:center;color:var(--muted);font-size:11px;padding:15px}
+@media(min-width:650px){.grid.stats{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:430px){h1{font-size:23px}.fieldgrid{grid-template-columns:1fr 1fr}.card{padding:14px}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+ <div class="eyebrow">YOUR PERSONAL STUDY DASHBOARD</div>
+ <h1>JEE 2027 COMMAND CENTRE</h1>
+ <div class="sub">Mission 100 • January 120+ • April 200+</div>
+ <div class="pills"><span class="pill">Start: 18 Nov 2026</span><span class="pill">Mission 100 ends: 9 Jan 2027</span><span class="pill">10-hour study plan</span></div>
+</div></header>
+<nav>
+ <button class="active" data-tab="home">Overview</button><button data-tab="daily">Daily tracker</button><button data-tab="mock">Mock tests</button><button data-tab="chapters">Chapters</button><button data-tab="settings">Settings</button>
+</nav>
+<main>
+<section id="home" class="view active">
+ <div class="grid stats">
+  <div class="stat"><small>JANUARY TARGET</small><strong class="green">120+</strong><small>JEE Main Session 1</small></div>
+  <div class="stat"><small>APRIL TARGET</small><strong class="blue">200+</strong><small>JEE Main Session 2</small></div>
+  <div class="stat"><small>Today's tasks</small><strong id="homeTasks">0/10</strong><small>Completed</small></div>
+  <div class="stat"><small>Chapters completed</small><strong id="homeChapters">0</strong><small>Across all subjects</small></div>
+ </div>
+ <div class="card">
+  <div class="row"><h2>Today's progress</h2><span class="tag" id="todayLabel"></span></div>
+  <div class="progress"><span id="homeProgress"></span></div><div class="row sub"><span id="progressText">0% complete</span><span id="questionSummary">0 questions solved</span></div>
+  <div class="actions"><button class="primary" onclick="switchTab('daily')">Open daily tracker</button><button class="secondary" onclick="switchTab('mock')">Log a mock</button></div>
+ </div>
+ <div class="card">
+  <h2>Score improvement log</h2>
+  <div class="grid">
+   <div><small class="muted">Latest mock score</small><strong id="latestScore" style="font-size:24px">—</strong></div>
+   <div><small class="muted">Best mock score</small><strong id="bestScore" style="font-size:24px">—</strong></div>
+  </div>
+  <p class="notice">Use mock analysis to identify concepts, calculation errors, time-management issues and questions you should have attempted.</p>
+ </div>
+ <div class="card">
+  <h2>Daily non-negotiables</h2>
+  <div class="notice">1. Lecture followed by practice. 2. No mock without analysis. 3. Revise chapters after 1, 3 and 7 days. 4. Protect sleep and take breaks.</div>
+ </div>
+</section>
+
+<section id="daily" class="view">
+ <div class="card">
+  <div class="row"><h2>Daily JEE tracker</h2><span class="tag" id="dailyDate"></span></div>
+  <div class="notice">Your checklist saves automatically on this device. Change the date to review or update another day's record.</div>
+  <div style="margin:12px 0"><label class="muted" for="dayDate">Tracker date</label><input type="date" id="dayDate"></div>
+  <div class="row"><strong id="taskCount">0 / 10 completed</strong><span class="muted" id="taskPercent">0%</span></div><div class="progress"><span id="dailyProgress"></span></div>
+  <div id="taskList"></div>
+  <div class="actions"><button class="secondary" onclick="resetDay()">Reset this date</button><button class="secondary" onclick="copySummary()">Copy today's summary</button></div>
+ </div>
+ <div class="card">
+  <h2>Question counter</h2><div class="notice">Enter questions you genuinely attempted today.</div>
+  <div class="fieldgrid" style="margin-top:12px">
+   <div class="field"><label>Physics</label><input type="number" min="0" id="qP" value="0"></div>
+   <div class="field"><label>Chemistry</label><input type="number" min="0" id="qC" value="0"></div>
+   <div class="field"><label>Mathematics</label><input type="number" min="0" id="qM" value="0"></div>
+  </div>
+  <div class="row" style="margin-top:12px"><span class="muted">Total attempted</span><strong id="qTotal">0</strong></div>
+  <button class="primary" style="margin-top:12px" onclick="saveQuestions()">Save question count</button>
+ </div>
+</section>
+
+<section id="mock" class="view">
+ <div class="card">
+  <h2>Record a mock test</h2>
+  <div class="fieldgrid">
+   <div class="field"><label>Date</label><input type="date" id="mockDate"></div>
+   <div class="field"><label>Physics marks</label><input type="number" id="mP" min="0" max="100" placeholder="0–100"></div>
+   <div class="field"><label>Chemistry marks</label><input type="number" id="mC" min="0" max="100" placeholder="0–100"></div>
+   <div class="field"><label>Maths marks</label><input type="number" id="mM" min="0" max="100" placeholder="0–100"></div>
+   <div class="field"><label>Correct</label><input type="number" id="mCorrect" min="0" placeholder="Count"></div>
+   <div class="field"><label>Incorrect</label><input type="number" id="mWrong" min="0" placeholder="Count"></div>
+  </div>
+  <div class="field" style="margin-top:10px"><label>What needs improvement?</label><textarea id="mNotes" rows="3" placeholder="Concept gaps, calculation errors, time management..."></textarea></div>
+  <button class="primary" style="margin-top:12px" onclick="addMock()">Save mock result</button>
+  <p class="notice">Check that subject marks add up to your total before saving. JEE Main Paper 1 maximum is 300.</p>
+ </div>
+ <div class="card"><h2>Mock history</h2><div id="mockHistory" class="notice">No mocks recorded yet.</div></div>
+</section>
+
+<section id="chapters" class="view">
+ <div class="card">
+  <h2>Chapter completion tracker</h2>
+  <div class="notice">Mark a chapter complete only when you have studied its concepts and practised questions. This is a broad checklist, not a substitute for the official 2027 syllabus.</div>
+  <div class="row" style="margin-top:12px"><strong id="chapterCount">0 completed</strong><span class="muted" id="chapterPct">0%</span></div><div class="progress"><span id="chapterProgress"></span></div>
+  <div class="actions"><select id="subjectFilter" onchange="renderChapters()"><option value="All">All subjects</option><option>Physics</option><option>Chemistry</option><option>Mathematics</option></select></div>
+  <div id="chapterList"></div>
+ </div>
+</section>
+
+<section id="settings" class="view">
+ <div class="card">
+  <h2>Your targets</h2>
+  <div class="fieldgrid">
+   <div class="field"><label>January target</label><input id="janTarget" type="number" value="120"></div>
+   <div class="field"><label>April target</label><input id="aprTarget" type="number" value="200"></div>
+   <div class="field"><label>Daily study hours</label><input id="studyHours" type="number" value="10"></div>
+  </div>
+  <button class="primary" style="margin-top:12px" onclick="saveSettings()">Save settings</button>
+ </div>
+ <div class="card">
+  <h2>Backup and restore</h2><p class="notice">Your data is stored in this browser on this device. Export a backup regularly, especially before clearing browser data or changing phones.</p>
+  <div class="actions"><button class="secondary" onclick="exportData()">Export backup</button><label class="secondary" style="display:inline-flex;align-items:center;cursor:pointer">Import backup<input type="file" accept="application/json" id="importFile" style="display:none" onchange="importData(event)"></label></div>
+  <p class="notice" style="margin-top:14px">To add this app to your Android home screen: open this HTML file in Chrome, tap ⋮, then choose “Add to Home screen” or “Install app” if offered.</p>
+  <button class="danger" onclick="clearAll()">Delete all tracker data</button>
+ </div>
+</section>
+</main>
+<footer>JEE 2027 COMMAND CENTRE • Keep showing up, one day at a time.</footer>
+<script>
+const tasks=["Completed scheduled Mission 100 lectures","Revised today's concepts","Completed Physics DPP / practice","Completed Chemistry DPP / practice","Completed Mathematics DPP / practice","Solved Physics PYQs","Solved Chemistry PYQs","Solved Mathematics PYQs","Revised NCERT / formulas / reactions","Updated error notebook and planned tomorrow"];
+const chapters={
+Physics:["Units and Dimensions","Basic Maths for Physics","Vectors","Kinematics","Laws of Motion","Work, Energy and Power","Centre of Mass","Rotational Motion","Gravitation","Mechanical Properties of Solids","Mechanical Properties of Fluids","Thermal Properties of Matter","Thermodynamics","Kinetic Theory of Gases","Oscillations","Waves","Electrostatics","Capacitance","Current Electricity","Moving Charges and Magnetism","Magnetism and Matter","Electromagnetic Induction","Alternating Current","Electromagnetic Waves","Ray Optics","Wave Optics","Dual Nature","Atoms","Nuclei","Semiconductors"],
+Chemistry:["Some Basic Concepts / Mole Concept","Atomic Structure","Classification and Periodicity","Chemical Bonding","Chemical Thermodynamics","Chemical Equilibrium","Ionic Equilibrium","Redox Reactions","Solutions","Electrochemistry","Chemical Kinetics","General Organic Chemistry","Hydrocarbons","Haloalkanes and Haloarenes","Alcohols, Phenols and Ethers","Aldehydes and Ketones","Carboxylic Acids","Amines","Biomolecules","p-Block Elements","d- and f-Block Elements","Coordination Compounds","Practical Chemistry"],
+Mathematics:["Basic Mathematics","Sets, Relations and Functions","Quadratic Equations","Complex Numbers","Sequence and Series","Binomial Theorem","Permutations and Combinations","Probability","Matrices","Determinants","Trigonometric Functions","Inverse Trigonometry","Straight Lines","Circles","Conic Sections","Limits and Continuity","Differentiation","Applications of Derivatives","Indefinite Integration","Definite Integration","Area Under Curves","Differential Equations","Vectors","Three-Dimensional Geometry","Statistics"]
+};
+const storeKey="jee27_command_v1";
+let data=JSON.parse(localStorage.getItem(storeKey)||'{"days":{},"mocks":[],"chapters":{},"settings":{"jan":120,"apr":200,"hours":10}}');
+function persist(){localStorage.setItem(storeKey,JSON.stringify(data));refreshHome()}
+function today(){return new Date().toLocaleDateString('en-CA')}
+function dayData(d){if(!data.days[d])data.days[d]={tasks:[],q:[0,0,0]};return data.days[d]}
+function switchTab(id){document.querySelectorAll('.view').forEach(x=>x.classList.toggle('active',x.id===id));document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('active',x.dataset.tab===id));if(id==="chapters")renderChapters();if(id==="mock")renderMocks();window.scrollTo({top:0,behavior:"smooth"})}
+document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>switchTab(b.dataset.tab)));
+function loadDay(){let d=document.getElementById('dayDate').value;let x=dayData(d);document.getElementById('dailyDate').textContent=d;document.getElementById('taskList').innerHTML=tasks.map((t,i)=>`<div class="check"><input type="checkbox" id="t${i}" ${x.tasks.includes(i)?'checked':''} onchange="toggleTask(${i},this.checked)"><label for="t${i}">${t}</label></div>`).join('');['qP','qC','qM'].forEach((id,i)=>document.getElementById(id).value=x.q[i]||0);updateDaily()}
+function toggleTask(i,v){let x=dayData(document.getElementById('dayDate').value);x.tasks=v?[...new Set([...x.tasks,i])]:x.tasks.filter(a=>a!==i);persist();updateDaily()}
+function updateDaily(){let d=document.getElementById('dayDate').value,x=dayData(d),n=x.tasks.length,p=Math.round(n/tasks.length*100);document.getElementById('taskCount').textContent=n+' / '+tasks.length+' completed';document.getElementById('taskPercent').textContent=p+'%';document.getElementById('dailyProgress').style.width=p+'%';document.getElementById('qTotal').textContent=x.q.reduce((a,b)=>a+b,0);refreshHome()}
+function saveQuestions(){let x=dayData(document.getElementById('dayDate').value);x.q=['qP','qC','qM'].map(id=>Math.max(0,Number(document.getElementById(id).value)||0));persist();updateDaily()}
+function resetDay(){if(confirm('Reset checklist and question counts for this date?')){data.days[document.getElementById('dayDate').value]={tasks:[],q:[0,0,0]};persist();loadDay()}}
+function copySummary(){let d=document.getElementById('dayDate').value,x=dayData(d);let s=`JEE 2027 Tracker — ${d}\nTasks: ${x.tasks.length}/${tasks.length}\nQuestions: Physics ${x.q[0]}, Chemistry ${x.q[1]}, Maths ${x.q[2]} (Total ${x.q.reduce((a,b)=>a+b,0)})`;navigator.clipboard?.writeText(s).then(()=>alert('Summary copied')).catch(()=>alert(s))}
+function addMock(){let date=document.getElementById('mockDate').value||today(),p=Number(mP.value),c=Number(mC.value),m=Number(mM.value);if([p,c,m].some(x=>!Number.isFinite(x)||x<0||x>100)){alert('Enter subject marks between 0 and 100.');return}let total=p+c+m;if(total>300){alert('Total cannot exceed 300.');return}data.mocks.push({date,p,c,m,total,correct:Number(mCorrect.value)||0,wrong:Number(mWrong.value)||0,notes:mNotes.value});data.mocks.sort((a,b)=>a.date.localeCompare(b.date));persist();renderMocks();['mP','mC','mM','mCorrect','mWrong','mNotes'].forEach(id=>document.getElementById(id).value='')}
+function renderMocks(){let el=document.getElementById('mockHistory');if(!data.mocks.length){el.textContent='No mocks recorded yet.';return}el.innerHTML='<table><thead><tr><th>Date</th><th>Phy</th><th>Chem</th><th>Math</th><th>Total</th></tr></thead><tbody>'+[...data.mocks].reverse().map((x,i)=>`<tr><td>${x.date}</td><td>${x.p}</td><td>${x.c}</td><td>${x.m}</td><td><b>${x.total}</b></td></tr><tr><td colspan="5" class="muted">${escapeHtml(x.notes||'No notes')} <button class="danger smallbtn" onclick="deleteMock(${data.mocks.length-1-i})">Delete</button></td></tr>`).join('')+'</tbody></table>'}
+function deleteMock(i){data.mocks.splice(i,1);persist();renderMocks()}
+function renderChapters(){let f=document.getElementById('subjectFilter').value,arr=[];Object.entries(chapters).forEach(([s,cs])=>{if(f==='All'||f===s)cs.forEach(c=>arr.push({s,c,k:s+'|'+c}))});let done=Object.values(data.chapters).filter(Boolean).length,total=Object.values(chapters).flat().length,p=Math.round(done/total*100);document.getElementById('chapterCount').textContent=done+' / '+total+' completed';document.getElementById('chapterPct').textContent=p+'%';document.getElementById('chapterProgress').style.width=p+'%';document.getElementById('chapterList').innerHTML=arr.map(x=>`<div class="chapter"><div><b>${escapeHtml(x.c)}</b><div class="muted" style="font-size:11px">${x.s}</div></div><input aria-label="Mark ${escapeHtml(x.c)} complete" type="checkbox" style="width:20px;height:20px;accent-color:#39d98a" ${data.chapters[x.k]?'checked':''} onchange="data.chapters['${x.k.replace(/'/g,"\\'")}']=this.checked;persist();renderChapters()"></div>`).join('')}
+function refreshHome(){let d=dayData(today()),n=d.tasks.length,p=Math.round(n/tasks.length*100);document.getElementById('homeTasks').textContent=n+'/10';document.getElementById('homeProgress').style.width=p+'%';document.getElementById('progressText').textContent=p+'% complete';document.getElementById('questionSummary').textContent=d.q.reduce((a,b)=>a+b,0)+' questions solved';document.getElementById('homeChapters').textContent=Object.values(data.chapters).filter(Boolean).length;document.getElementById('todayLabel').textContent=today();let scores=data.mocks.map(x=>x.total);document.getElementById('latestScore').textContent=data.mocks.length?scores[scores.length-1]+'/300':'—';document.getElementById('bestScore').textContent=scores.length?Math.max(...scores)+'/300':'—'}
+function saveSettings(){data.settings={jan:Number(janTarget.value)||120,apr:Number(aprTarget.value)||200,hours:Number(studyHours.value)||10};persist();alert('Targets saved.')}
+function exportData(){let blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='jee2027-tracker-backup.json';a.click();URL.revokeObjectURL(a.href)}
+function importData(e){let file=e.target.files[0];if(!file)return;let r=new FileReader();r.onload=()=>{try{let x=JSON.parse(r.result);if(!x.days||!x.mocks||!x.chapters)throw 0;data=x;persist();loadDay();renderChapters();renderMocks();alert('Backup restored.')}catch{alert('This backup file is not valid.')}};r.readAsText(file)}
+function clearAll(){if(confirm('Permanently delete all tracker data from this browser? Export a backup first if needed.')){localStorage.removeItem(storeKey);location.reload()}}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+document.getElementById('dayDate').value=today();document.getElementById('mockDate').value=today();janTarget.value=data.settings.jan;aprTarget.value=data.settings.apr;studyHours.value=data.settings.hours;document.getElementById('dayDate').addEventListener('change',loadDay);loadDay();refreshHome();renderChapters();renderMocks();
+</script>
+</body></html>
